@@ -1,4 +1,4 @@
-package asciiArtApp.converters.image.specific.toRgb
+package asciiArtApp.converters.color.toRgb
 
 import asciiArtApp.model.image.grid.GridImageAs2DSeq
 import converters.Converter

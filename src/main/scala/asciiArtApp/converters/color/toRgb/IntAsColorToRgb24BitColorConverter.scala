@@ -1,4 +1,4 @@
-package asciiArtApp.converters.image.specific.toRgb
+package asciiArtApp.converters.color.toRgb
 
 import asciiArtApp.model.color.rgb.Rgb24BitColor
 import converters.Converter

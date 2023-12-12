@@ -1,4 +1,4 @@
-package asciiArtApp.converters.image.specific.toAscii
+package asciiArtApp.converters.color.toAscii
 
 import asciiArtApp.model.character.ascii.AsciiCharacter
 import asciiArtApp.model.color.greyscale.Greyscale8BitColor

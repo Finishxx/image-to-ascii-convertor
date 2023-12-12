@@ -1,4 +1,4 @@
-package asciiArtApp.converters.image.specific.toGreyscale
+package asciiArtApp.converters.color.toGreyscale
 
 import asciiArtApp.model.color.greyscale.Greyscale8BitColor
 import asciiArtApp.model.color.rgb.Rgb24BitColor
