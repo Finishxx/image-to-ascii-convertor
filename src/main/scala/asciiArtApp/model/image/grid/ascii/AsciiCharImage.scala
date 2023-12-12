@@ -1,5 +1,5 @@
 package asciiArtApp.model.image.grid.ascii
 
-import asciiArtApp.model.character.ascii.AsciiChar
+import asciiArtApp.model.character.ascii.AsciiCharacter
 
-trait AsciiCharImage extends CharacterImage[AsciiChar]
+trait AsciiCharImage extends CharacterImage[AsciiCharacter]
