@@ -4,4 +4,4 @@ import filters.Filter
 
 
 // Grid will be facaded by ascii
-trait GridFilter[T] extends Filter[Seq[Seq[T]]]
+trait Grid2DFilter[T] extends Filter[Seq[Seq[T]]]

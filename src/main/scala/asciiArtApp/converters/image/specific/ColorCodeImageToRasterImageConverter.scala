@@ -1,7 +1,5 @@
-package converters.image.specific
+package asciiArtApp.converters.image.specific
 
-import asciiArtApp.model.image.grid.Rgb24BitColorImage
-import asciiArtApp.model.image.grid.gridElements.RgbPixel
 import converters.Converter
 
 class ColorCodeImageToRasterImageConverter(converter: Converter[Int, RgbPixel]) extends Converter[Seq[Seq[Int]], Rgb24BitColorImage] {
