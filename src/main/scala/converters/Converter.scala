@@ -1,5 +1,7 @@
 package converters
 
-trait Converter {
+trait Converter[T, V] {
+
+  def convert(what: T): V
 
 }
