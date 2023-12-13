@@ -1,6 +1,4 @@
-package dataSource.imageColorCodeGrid.generators.specific
-
-import dataSource.imageColorCodeGrid.generators.ImageGenerator
+package asciiArtApp.dataSource.image.generators
 
 import scala.util.Random
 
