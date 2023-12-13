@@ -9,5 +9,4 @@ class IntAsColorToRgb24BitColorConverter extends Converter[Int, Rgb24BitColor] {
       ((what >> 16) & 0xFF).toByte,
       ((what >> 8) & 0xFF).toByte,
       (what & 0xFF).toByte)
-
 }

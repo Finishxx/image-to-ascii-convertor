@@ -5,5 +5,5 @@ import asciiArtApp.model.color.greyscale.Greyscale8BitColor
 import converters.specific.SubstitutionConverter
 
 class Greyscale8BitToAsciiConverter(
-  table: Map[AsciiCharacter, Greyscale8BitColor])
-    extends SubstitutionConverter[AsciiCharacter, Greyscale8BitColor](table)
+  table: Map[Greyscale8BitColor, AsciiCharacter])
+    extends SubstitutionConverter[Greyscale8BitColor, AsciiCharacter](table)
