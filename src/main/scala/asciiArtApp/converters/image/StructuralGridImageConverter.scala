@@ -2,7 +2,7 @@ package asciiArtApp.converters.image
 
 import asciiArtApp.model.image.grid.GridImage
 import converters.Converter
-import converters.specific.StructuralConverter
+import converters.structural.StructuralConverter
 
 class StructuralGridImageConverter[T, V](converter: Converter[T, V])
     extends StructuralConverter[GridImage, T, V](converter) {
