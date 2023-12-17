@@ -2,6 +2,7 @@ package exporters.text
 
 import java.io.OutputStream
 
+// Taken from example semester work by Martin Drozdík
 class StreamTextExporter(outputStream: OutputStream) extends TextExporter {
 
   var closed: Boolean = false
