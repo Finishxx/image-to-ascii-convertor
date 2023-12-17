@@ -2,7 +2,7 @@ package asciiArtApp.converters.image
 
 import asciiArtApp.model.image.grid.GridImage
 import converters.Converter
-import converters.structural.InnerConverter
+import converters.specific.InnerConverter
 
 class InnerGridImageConverter[T, V](converter: Converter[T, V])
     extends InnerConverter[GridImage, T, V](converter) {

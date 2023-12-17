@@ -1,4 +1,4 @@
-package converters.structural
+package converters.specific
 
 import converters.Converter
 
