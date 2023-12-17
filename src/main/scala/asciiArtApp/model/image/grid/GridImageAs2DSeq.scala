@@ -1,7 +1,5 @@
 package asciiArtApp.model.image.grid
 
-import scala.collection.mutable
-
 class GridImageAs2DSeq[T](grid: Seq[Seq[T]]) extends GridImage[T] {
   require(
     grid.forall(_.size == grid.head.size),

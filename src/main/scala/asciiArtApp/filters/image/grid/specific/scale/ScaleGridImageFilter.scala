@@ -1,7 +1,7 @@
 package asciiArtApp.filters.image.grid.specific.scale
 
-import asciiArtApp.filters.image.grid.specific.GridToGridImageFilterAdapter
-import filters.grid.scale.ScaleGridFilter
+import asciiArtApp.filters.image.grid.specific.Seq2DToGridImageFilterAdapter
+import filters.grid.scale.ScaleSeq2DFilter
 
 class ScaleGridImageFilter[T](factor: Double)
-    extends GridToGridImageFilterAdapter[T](new ScaleGridFilter(factor))
+    extends Seq2DToGridImageFilterAdapter[T](new ScaleSeq2DFilter(factor))

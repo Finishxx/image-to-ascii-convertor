@@ -1,8 +1,8 @@
 package filters.grid.rotate
 
-import filters.grid.GridAs2DSeqFilter
+import filters.grid.Seq2DFilter
 
-class RotateGridFilter[T](degrees: Int) extends GridAs2DSeqFilter[T] {
+class RotateSeq2DFilter[T](degrees: Int) extends Seq2DFilter[T] {
 
   private def rotate90(grid: Seq[Seq[T]]): Seq[Seq[T]] = grid.transpose
 

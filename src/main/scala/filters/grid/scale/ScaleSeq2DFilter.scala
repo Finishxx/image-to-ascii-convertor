@@ -1,8 +1,8 @@
 package filters.grid.scale
 
-import filters.grid.GridAs2DSeqFilter
+import filters.grid.Seq2DFilter
 
-class ScaleGridFilter[T](factor: Double) extends GridAs2DSeqFilter[T] {
+class ScaleSeq2DFilter[T](factor: Double) extends Seq2DFilter[T] {
 
   private def quadruple(grid: Seq[Seq[T]]): Seq[Seq[T]] =
     grid.map(_.flatMap(Seq.fill(4)(_)))
