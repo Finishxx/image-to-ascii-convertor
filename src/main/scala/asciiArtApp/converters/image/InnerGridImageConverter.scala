@@ -2,10 +2,10 @@ package asciiArtApp.converters.image
 
 import asciiArtApp.model.image.grid.GridImage
 import converters.Converter
-import converters.structural.StructuralConverter
+import converters.structural.InnerConverter
 
-class StructuralGridImageConverter[T, V](converter: Converter[T, V])
-    extends StructuralConverter[GridImage, T, V](converter) {
+class InnerGridImageConverter[T, V](converter: Converter[T, V])
+    extends InnerConverter[GridImage, T, V](converter) {
   override def convertInner(
     what: GridImage[T],
     conversion: T => V): GridImage[V] =
