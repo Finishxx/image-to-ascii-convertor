@@ -1,8 +1,6 @@
 package asciiArtApp.model.color.rgb
 
-import asciiArtApp.model.color.Color
-
-case class Rgb24BitColor(red: Int, green: Int, blue: Int) extends RgbImage {
+case class Rgb24BitColor(red: Int, green: Int, blue: Int) extends RgbColor {
   require(
     red >= 0 && red <= 255,
     "Please use values between 0 and 255 for representing red color")

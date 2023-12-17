@@ -15,6 +15,7 @@ class ImageLoader(file: File) extends ImageColorCodeGridSource {
       .toSeq
       .grouped(bufferedImage.getWidth())
       .toArray
+      .toSeq
 
   }
 

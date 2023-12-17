@@ -2,14 +2,14 @@ package filters.grid.rotate
 
 import filters.grid.GridAs2DSeqFilter
 
-class RotateGridFilter(degrees: Int) extends GridAs2DSeqFilter {
+class RotateGridFilter[T](degrees: Int) extends GridAs2DSeqFilter[T] {
 
-  private def rotate90(grid: Seq[Seq[_]]): Seq[Seq[_]] = grid.transpose
+  private def rotate90(grid: Seq[Seq[T]]): Seq[Seq[T]] = grid.transpose
 
-  private def rotateMinus90(grid: Seq[Seq[_]]): Seq[Seq[_]] =
+  private def rotateMinus90(grid: Seq[Seq[T]]): Seq[Seq[T]] =
     grid.transpose.map(_.reverse)
 
-  override def filter(what: Seq[Seq[_]]): Seq[Seq[_]] =
+  override def filter(what: Seq[Seq[T]]): Seq[Seq[T]] =
     degrees % 360 match {
       case 0          => what
       case 180 | -180 => what.map(_.reverse).reverse
