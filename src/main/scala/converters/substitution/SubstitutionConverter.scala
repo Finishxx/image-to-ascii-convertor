@@ -1,4 +1,4 @@
-package converters.substition
+package converters.substitution
 
 import converters.Converter
 
