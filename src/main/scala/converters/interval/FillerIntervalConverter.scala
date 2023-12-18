@@ -1,6 +1,6 @@
 package converters.interval
 
-class OneToOneWithRestFillerIntervalConverter[T](
+class FillerIntervalConverter[T](
   elements: Seq[T],
   filler: T,
   from: Int,
@@ -10,8 +10,8 @@ class OneToOneWithRestFillerIntervalConverter[T](
     elements.size < to - from + 1,
     "Please provide smaller sized elements than from-to range, for filler to be relevant at all!")
 
-  val substitutionConverter: LinearConverterBuilder[T] =
-    new LinearConverterBuilder(
+  val substitutionConverter: LinearIntervalConverter[T] =
+    new LinearIntervalConverter(
       elements,
       elements.indices.start,
       elements.indices.end)

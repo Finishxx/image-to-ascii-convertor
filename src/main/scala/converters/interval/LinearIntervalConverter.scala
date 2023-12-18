@@ -2,14 +2,14 @@ package converters.interval
 
 import converters.specific.SubstitutionConverter
 
-class LinearConverterBuilder[T](elements: Seq[T], from: Int, to: Int)
+class LinearIntervalConverter[T](elements: Seq[T], from: Int, to: Int)
     extends IntervalConverter[T] {
   require(to > from, "To has to be greater than from!")
   require(
     elements.size >= to - from,
     "Please provide one element for each number in range!")
 
-  protected def createLinearTable(
+  private def createLinearTable(
     elements: Seq[T],
     from: Int,
     to: Int): Map[Int, T] = {
