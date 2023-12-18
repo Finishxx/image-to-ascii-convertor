@@ -1,6 +1,6 @@
-package asciiArtApp.filters.image.grid.specific.flip
+package asciiArtApp.filters.image.grid.flip
 
-import asciiArtApp.filters.image.grid.specific.Seq2DToGridImageFilterAdapter
+import asciiArtApp.filters.image.grid.Seq2DToGridImageFilterAdapter
 import filters.grid.flip.Axis.Axis
 import filters.grid.flip.FlipSeq2DFilter
 

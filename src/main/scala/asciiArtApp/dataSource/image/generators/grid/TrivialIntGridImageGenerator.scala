@@ -10,8 +10,6 @@ class TrivialIntGridImageGenerator(
   height: Int,
   intGenerator: IntGenerator)
     extends GridImageGenerator[Int](width, height) {
-  override def generate(width: Int, height: Int): GridImage[Int] = {
-    val random: Random = new Random
+  override def generate(width: Int, height: Int): GridImage[Int] =
     new GridImageAs2DSeq(Seq.fill(width, height)(intGenerator.provide()))
-  }
 }

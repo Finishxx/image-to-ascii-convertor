@@ -1,6 +1,5 @@
-package asciiArtApp.filters.image.grid.specific
+package asciiArtApp.filters.image.grid
 
-import asciiArtApp.filters.image.grid.GridImageFilter
 import asciiArtApp.model.image.grid.{GridImage, GridImageAs2DSeq}
 import filters.grid.Seq2DFilter
 

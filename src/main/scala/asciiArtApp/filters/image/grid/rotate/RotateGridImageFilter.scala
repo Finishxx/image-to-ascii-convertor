@@ -1,6 +1,6 @@
-package asciiArtApp.filters.image.grid.specific.rotate
+package asciiArtApp.filters.image.grid.rotate
 
-import asciiArtApp.filters.image.grid.specific.Seq2DToGridImageFilterAdapter
+import asciiArtApp.filters.image.grid.Seq2DToGridImageFilterAdapter
 import filters.grid.rotate.RotateSeq2DFilter
 
 class RotateGridImageFilter[T](degrees: Int)
