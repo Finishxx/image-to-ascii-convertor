@@ -6,28 +6,33 @@ import org.scalatest.Matchers.{an, be, noException, thrownBy}
 trait TestWithGridImage {
   def testGridImageDimensions(gridImage: GridImage[_]): Unit = {
     // check all allowed are ok
-    for (x <- 1 to gridImage.width)
-      for (y <- 1 to gridImage.height)
+    for (x <- 0 until gridImage.width)
+      for (y <- 0 until gridImage.height)
         noException should be thrownBy gridImage.at(x, y)
 
     // check all disallowed throw
-    for (x <- 0 to gridImage.width + 1) {
+    for (x <- -1 to gridImage.width) {
       // check below bounds
       an[IllegalArgumentException] should be thrownBy gridImage.at(
         x,
-        gridImage.height + 1)
+        gridImage.height)
       // check above bounds
-      an[IllegalArgumentException] should be thrownBy gridImage.at(x, 0)
+      an[IllegalArgumentException] should be thrownBy gridImage.at(x, -1)
     }
 
-    for (y <- 0 to gridImage.height + 1) {
+    for (y <- -1 until gridImage.height) {
       // check left
-      an[IllegalArgumentException] should be thrownBy gridImage.at(0, y)
+      an[IllegalArgumentException] should be thrownBy gridImage.at(-1, y)
       // check right
       an[IllegalArgumentException] should be thrownBy gridImage.at(
-        gridImage.width + 1,
+        gridImage.width,
         y)
     }
   }
+
+  def all[T](gridImage: GridImage[T], pred: T => Boolean): Unit =
+    for (x <- 1 until gridImage.width)
+      for (y <- 1 until gridImage.height)
+        assert(pred(gridImage.at(x, y)))
 
 }
