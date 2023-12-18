@@ -1,4 +1,4 @@
-package asciiArtApp.converters.color.toAscii.intervalConverters
+package converters.interval
 
 import converters.Converter
 

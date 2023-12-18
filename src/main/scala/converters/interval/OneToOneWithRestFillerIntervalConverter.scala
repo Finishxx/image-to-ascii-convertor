@@ -1,6 +1,4 @@
-package asciiArtApp.converters.color.toAscii.intervalConverters
-
-import converters.specific.SubstitutionConverter
+package converters.interval
 
 class OneToOneWithRestFillerIntervalConverter[T](
   elements: Seq[T],
