@@ -12,5 +12,5 @@ class Rgb24BitToGreyscale8BitColorConverter(
 
   override def convert(what: Rgb24BitColor): Greyscale8BitColor =
     Greyscale8BitColor(
-      ((what.red * redWeight) + (what.green * greenWeight) + (what.blue * blueWeight)).toByte)
+      ((what.red * redWeight) + (what.green * greenWeight) + (what.blue * blueWeight)).toInt)
 }
