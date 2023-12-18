@@ -1,4 +1,4 @@
-package grid
+package asciiArtApp.model.grid
 
 trait Grid[T] {
   def width: Int

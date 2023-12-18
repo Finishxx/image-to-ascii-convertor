@@ -1,7 +1,7 @@
 package asciiArtApp.model.image.grid
 
+import asciiArtApp.model.grid.Grid
 import asciiArtApp.model.image.Image
-import grid.Grid
 
 import scala.annotation.unused
 

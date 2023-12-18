@@ -1,5 +1,5 @@
 package asciiArtApp.converters.image
 
-class StructuralGridImageConverterTest {
+class InnerGridImageConverterTest {
 
 }
