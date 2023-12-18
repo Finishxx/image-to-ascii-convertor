@@ -4,6 +4,6 @@ import asciiArtApp.model.color.Color
 
 case class Greyscale8BitColor(intensity: Int) extends Color {
   require(
-    intensity >= 0 && intensity <= 255,
+    (0 to 255).contains(intensity),
     "Please use values between 0 and 255 for representing red color")
 }
