@@ -10,9 +10,9 @@ class GridImageAs2DSeq[T](grid: Seq[Seq[T]]) extends GridImage[T] {
   override def height: Int = grid.head.size
 
   override def at(x: Int, y: Int): T = {
-    require((1 to width).contains(x), "GridImage accessed with invalid x!")
-    require((1 to height).contains(y), "GridImage accessed with invalid y!")
-    grid(x - 1)(y - 1)
+    require((0 to width).contains(x), "GridImage accessed with invalid x!")
+    require((0 to height).contains(y), "GridImage accessed with invalid y!")
+    grid(x)(y)
   }
 
   override def map[V](fun: T => V): GridImage[V] =
