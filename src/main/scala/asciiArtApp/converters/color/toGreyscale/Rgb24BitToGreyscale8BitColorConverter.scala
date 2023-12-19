@@ -9,6 +9,9 @@ class Rgb24BitToGreyscale8BitColorConverter(
   greenWeight: Double,
   blueWeight: Double)
     extends Converter[Rgb24BitColor, Greyscale8BitColor] {
+  require(
+    Math.abs(redWeight + greenWeight + blueWeight - 1) < 1e-10,
+    "Weights should add up to 1 to get reasonable results!")
 
   override def convert(what: Rgb24BitColor): Greyscale8BitColor =
     Greyscale8BitColor(
