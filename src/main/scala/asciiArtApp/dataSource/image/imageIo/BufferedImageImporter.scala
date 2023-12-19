@@ -8,6 +8,7 @@ import javax.imageio.ImageIO
 
 class BufferedImageImporter(file: File)
     extends FromFileImporter[BufferedImage](file) {
+  require(file.exists(), "Please provide a path to a file, which exists!")
   override protected def importFromFile(file: File): BufferedImage =
     ImageIO.read(file)
 }

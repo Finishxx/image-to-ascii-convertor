@@ -10,7 +10,7 @@ class BufferedImageToIntGridImageConverter
   override def convert(what: BufferedImage): GridImage[Int] =
     new GridImageAs2DSeq(
       what
-        .getRGB(0, 0, what.getWidth, what.getHeight, null, 0, 0)
+        .getRGB(0, 0, what.getWidth, what.getHeight, null, 0, what.getWidth)
         .toSeq
         .grouped(what.getWidth())
         .toSeq
