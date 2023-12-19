@@ -15,4 +15,18 @@ trait TestWithIntColor {
     //print( s"Expected: ($r, $g, $b), got: (${getRed(int)}, ${getGreen(int)}, ${getBlue(int)})")
     getRed(int) == r && getGreen(int) == g && getBlue(int) == b
 
+  def rgbToInt(r: Int, g: Int, b: Int): Int = { // TODO: Delete if not neccessary
+    require(
+      r >= 0,
+      "Please provide positive number for representing red color!")
+    require(
+      g >= 0,
+      "Please provide positive number for representing green color!")
+    require(
+      b >= 0,
+      "Please provide positive number for representing blue color!")
+
+    (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF)
+  }
+
 }
