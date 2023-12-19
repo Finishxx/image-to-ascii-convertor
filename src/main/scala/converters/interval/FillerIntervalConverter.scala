@@ -7,18 +7,24 @@ class FillerIntervalConverter[T](
   to: Int)
     extends IntervalConverter[T] {
   require(
-    elements.size < to - from + 1,
-    "Please provide smaller sized elements than from-to range, for filler to be relevant at all!")
+    elements.size <= to - from + 1,
+    "Please provide one element for each number in range!")
+  require(to >= from, "To has to be greater than from!")
 
-  val substitutionConverter: LinearIntervalConverter[T] =
+  private val substitutionFrom: Int = from
+  private val substitutionTo: Int =
+    if (elements.isEmpty) from else from + elements.size - 1
+
+  private val substitutionConverter: LinearIntervalConverter[T] =
     new LinearIntervalConverter(
-      elements,
-      elements.indices.start,
-      elements.indices.end)
+      if (elements.isEmpty) Seq(filler) else elements,
+      from,
+      substitutionTo)
+
   override def convert(what: Int): T =
-    if (what >= from && what <= elements.indices.end)
+    if ((substitutionFrom to substitutionTo).contains(what))
       substitutionConverter.convert(what)
-    else if (what >= from && what <= to)
+    else if ((substitutionTo to to).contains(what))
       filler
     else
       throw new NoSuchElementException(

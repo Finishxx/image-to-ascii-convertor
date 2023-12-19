@@ -20,6 +20,19 @@ class LinearIntervalConverterTest extends FunSuite {
       Int](Seq(), 0, 1)
   }
 
+  test("Throws on trying to access out of interval") {
+    val converterPos = new LinearIntervalConverter[Int](Seq(1, 2, 3), 0, 5)
+
+    an[IllegalArgumentException] should be thrownBy converterPos.convert(10)
+    an[IllegalArgumentException] should be thrownBy converterPos.convert(-10)
+
+
+    val converterNeg = new LinearIntervalConverter[Int](Seq(1, 2, 3), -5, 0)
+
+    an[IllegalArgumentException] should be thrownBy converterNeg.convert(10)
+    an[IllegalArgumentException] should be thrownBy converterNeg.convert(-10)
+  }
+
   test("Positive bounds: Equal spread") {
     val converter = new LinearIntervalConverter[Int](Seq(1, 2, 3), 0, 5)
     converter.convert(0) should equal(1)
