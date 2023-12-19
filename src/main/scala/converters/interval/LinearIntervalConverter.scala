@@ -4,16 +4,20 @@ import converters.specific.SubstitutionConverter
 
 class LinearIntervalConverter[T](elements: Seq[T], from: Int, to: Int)
     extends IntervalConverter[T] {
-  require(to > from, "To has to be greater than from!")
+  require(to >= from, "To has to be greater than from!")
   require(
-    elements.size >= to - from,
+    elements.size <= to - from + 1,
     "Please provide one element for each number in range!")
+  require(
+    elements.nonEmpty,
+    "Please provide at least one element!"
+  )
 
   private def createLinearTable(
     elements: Seq[T],
     from: Int,
     to: Int): Map[Int, T] = {
-    val numElements = elements.length
+    val numElements = elements.size
     val rangeSize = (to - from + 1) / numElements
     val remainder = (to - from + 1) % numElements
 
