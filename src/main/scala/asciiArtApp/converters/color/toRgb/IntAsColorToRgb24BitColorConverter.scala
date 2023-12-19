@@ -5,8 +5,5 @@ import converters.Converter
 
 class IntAsColorToRgb24BitColorConverter extends Converter[Int, Rgb24BitColor] {
   override def convert(what: Int): Rgb24BitColor =
-    Rgb24BitColor(
-      ((what >> 16) & 0xFF).toByte,
-      ((what >> 8) & 0xFF).toByte,
-      (what & 0xFF).toByte)
+    Rgb24BitColor((what >> 16) & 0xFF, (what >> 8) & 0xFF, what & 0xFF)
 }
