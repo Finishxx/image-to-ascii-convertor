@@ -14,6 +14,13 @@ trait TestWithColor {
     colorIterable
   }
 
+  def getAllGreyscale8BitColors: Iterable[Greyscale8BitColor] = {
+    val colorIterable: Iterable[Greyscale8BitColor] =
+      for (intensity <- 0 to 255)
+        yield Greyscale8BitColor(intensity)
+    colorIterable
+  }
+
   def greyscale8BitColorSatisfy(
     what: Greyscale8BitColor => Boolean): Boolean = {
     for (intensity <- 0 to 255)
