@@ -31,8 +31,8 @@ trait TestWithGridImage {
   }
 
   def all[T](gridImage: GridImage[T], pred: T => Boolean): Unit =
-    for (x <- 1 until gridImage.width)
-      for (y <- 1 until gridImage.height)
+    for (x <- 0 until gridImage.width)
+      for (y <- 0 until gridImage.height)
         assert(pred(gridImage.at(x, y)))
 
 }
