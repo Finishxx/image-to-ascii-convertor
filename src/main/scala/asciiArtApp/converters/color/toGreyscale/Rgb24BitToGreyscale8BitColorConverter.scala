@@ -15,13 +15,13 @@ class Rgb24BitToGreyscale8BitColorConverter(
     Math.abs(redWeight + greenWeight + blueWeight - 1) < 1e-10,
     "Weights should add up to 1 to get reasonable results!")
   require(
-    (0 to 1).contains(redWeight),
+    redWeight >= 0 && redWeight <= 1,
     "Red weight should be non-negative and not greater than one!")
   require(
-    (0 to 1).contains(greenWeight),
+    greenWeight >= 0 && greenWeight <= 1,
     "Green weight should be non-negative and not greater than one!")
   require(
-    (0 to 1).contains(blueWeight),
+    blueWeight >= 0 && blueWeight <= 1,
     "Blue weight should be non-negative and not greater than one!")
 
   override def convert(what: Rgb24BitColor): Greyscale8BitColor =
