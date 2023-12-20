@@ -22,7 +22,7 @@ import filters.grid.scale.ScaleSeq2DFilter
  *
  * @param factor Factor by which the GridImage is scaled by. In essence by how
  *               much should the area of the image be factored by after the scaling
- * @tparam T Type of elements contained in scaled GridImage
+ * @tparam T Type of elements contained GridImage
  */
 class ScaleGridImageFilter[T](factor: Double)
     extends Seq2DToGridImageFilterAdapter[T](new ScaleSeq2DFilter[T](factor))

@@ -2,6 +2,13 @@ package filters.grid.rotate
 
 import filters.grid.Seq2DFilter
 
+/**
+ * Rotates Seq2D by multiples of 90
+ *
+ * @param degrees By how many degrees should the Seq2D be rotated by.
+ *                Only multiples of 90 are allowed
+ * @tparam T Type of elements stored inside Seq2D
+ */
 class RotateSeq2DFilter[T](degrees: Int) extends Seq2DFilter[T] {
   require(degrees % 90 == 0, "Please input degrees as multiples of 90!")
 
