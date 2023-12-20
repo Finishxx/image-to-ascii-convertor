@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage
  * color of the image stored in BufferedImage
  */
 class BufferedImageToIntGridImageConverter
-    extends Converter[BufferedImage, GridImage[Int]] {
+    extends BufferedImageToImageConverter[GridImage[Int]] {
   override def convert(what: BufferedImage): GridImage[Int] =
     new GridImageAs2DSeq(
       what

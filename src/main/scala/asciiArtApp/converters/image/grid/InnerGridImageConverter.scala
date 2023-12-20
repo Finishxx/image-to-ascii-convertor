@@ -1,4 +1,4 @@
-package asciiArtApp.converters.image
+package asciiArtApp.converters.image.grid
 
 import asciiArtApp.model.image.grid.GridImage
 import converters.Converter
@@ -11,7 +11,7 @@ import converters.Converter
  * @tparam V Inner type of GridImage[V], which we convert to
  */
 class InnerGridImageConverter[T, V](converter: Converter[T, V])
-    extends Converter[GridImage[T], GridImage[V]] {
+    extends GridImageConverter[T, V] {
   override def convert(what: GridImage[T]): GridImage[V] =
     what.map(converter.convert)
 }

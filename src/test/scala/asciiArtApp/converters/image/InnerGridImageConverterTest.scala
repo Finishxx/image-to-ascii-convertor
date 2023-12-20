@@ -1,5 +1,6 @@
 package asciiArtApp.converters.image
 
+import asciiArtApp.converters.image.grid.InnerGridImageConverter
 import asciiArtApp.model.image.grid.{GridImage, GridImageAs2DSeq}
 import converters.Converter
 import helpers.TestWithGridImage
