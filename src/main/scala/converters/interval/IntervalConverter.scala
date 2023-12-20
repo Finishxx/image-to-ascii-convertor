@@ -2,5 +2,9 @@ package converters.interval
 
 import converters.Converter
 
-// Maps intervals of numbers into T
+/**
+ * Converts intervals of Int into T
+ *
+ * @tparam T Type being converted
+ */
 trait IntervalConverter[T] extends Converter[Int, T]

@@ -2,6 +2,18 @@ package converters.interval
 
 import converters.specific.SubstitutionConverter
 
+/**
+ * Maps range of Ints defined by from and to elements arguably as equally as possible
+ *
+ * If characters can't be mapped truly equally, meaning we can not map equal number
+ * of int values to each individual element from elements, maps more int values
+ * onto first element and divides the rest equally
+ *
+ * @param elements Elements being mapped to
+ * @param from Inclusive start of range
+ * @param to Inclusive end of range
+ * @tparam T Type being converted into i.e. type of elements
+ */
 class LinearIntervalConverter[T](elements: Seq[T], from: Int, to: Int)
     extends IntervalConverter[T] {
   require(to >= from, "To has to be greater than from!")

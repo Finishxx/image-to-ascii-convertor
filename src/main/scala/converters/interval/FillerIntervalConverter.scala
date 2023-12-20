@@ -1,5 +1,15 @@
 package converters.interval
 
+/**
+ * Maps range of Ints defined by from and to elements one-to-one with elements,
+ * if not possible maps the rest with filler
+ *
+ * @param elements Elements being mapped to
+ * @param filler Filler element, which leftover unmapped ints are mapped to
+ * @param from Inclusive start of range
+ * @param to Inclusive end of range
+ * @tparam T Type being converted into i.e. type of elements
+ */
 class FillerIntervalConverter[T](
   elements: Seq[T],
   filler: T,
