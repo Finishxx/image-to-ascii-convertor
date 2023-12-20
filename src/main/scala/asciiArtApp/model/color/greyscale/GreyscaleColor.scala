@@ -1,5 +1,6 @@
 package asciiArtApp.model.color.greyscale
 
-trait GreyscaleColor {
-
-}
+/**
+ * Represents greyscale color
+ */
+trait GreyscaleColor

@@ -1,5 +1,11 @@
 package asciiArtApp.model.image.grid
 
+/**
+ * Implementation of GridImage storing elements of type T in a grid
+ *
+ * @param grid Grid which stores the image information
+ * @tparam T Type of elements contained in the grid
+ */
 class GridImageAs2DSeq[T](grid: Seq[Seq[T]]) extends GridImage[T] {
   require(
     grid.forall(_.size == grid.head.size),
