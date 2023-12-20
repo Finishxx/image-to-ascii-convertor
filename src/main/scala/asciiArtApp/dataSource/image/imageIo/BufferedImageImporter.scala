@@ -6,6 +6,10 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
+/**
+ * Imports BufferedImage using ImageIO library
+ * @param file File pointing to image we want to import
+ */
 class BufferedImageImporter(file: File)
     extends FromFileImporter[BufferedImage](file) {
   require(file.exists(), "Please provide a path to a file, which exists!")
