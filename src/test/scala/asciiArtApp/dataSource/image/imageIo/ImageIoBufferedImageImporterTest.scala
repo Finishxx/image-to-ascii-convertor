@@ -7,7 +7,7 @@ import org.scalatest.Matchers.{an, be, noException}
 import java.awt.image.BufferedImage
 import java.io.File
 
-class BufferedImageImporterTest extends FunSuite with TestWithImages {
+class ImageIoBufferedImageImporterTest extends FunSuite with TestWithImages {
 
   def printBufferedImageContents(bufferedImage: BufferedImage): Unit = {
     val intArray: Array[Int] = bufferedImage.getRGB(
@@ -22,13 +22,13 @@ class BufferedImageImporterTest extends FunSuite with TestWithImages {
   }
 
   def loadFile(fileName: String): Unit = {
-    val importer = new BufferedImageImporter(new File(fileName))
+    val importer = new ImageIoBufferedImageImporter(new File(fileName))
     noException should be thrownBy importer.provide()
     // printBufferedImageContents(importer.provide())
   }
 
   test("Nonexistent file") {
-    an[IllegalArgumentException] should be thrownBy new BufferedImageImporter(
+    an[IllegalArgumentException] should be thrownBy new ImageIoBufferedImageImporter(
       new File("asdasedgfgfddfdfjhgdfgdsfjgsdjlkghsdfhdfg"))
   }
 
