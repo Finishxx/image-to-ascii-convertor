@@ -6,6 +6,16 @@ import converters.Converter
 
 import scala.math.Fractional.Implicits.infixFractionalOps
 
+/**
+ * Converts Rgb24BitColor into GreyscaleColor by adding up weighted colors.
+ *
+ * Individual weights can not be negative, also they can not be greater
+ * than one, nor can they add up to anything other than 1 together.
+ *
+ * @param redWeight Weight applied to red color
+ * @param greenWeight Weight applied to green color
+ * @param blueWeight Weight applied to blue color
+ */
 class Rgb24BitToGreyscale8BitColorConverter(
   redWeight: Double,
   greenWeight: Double,
