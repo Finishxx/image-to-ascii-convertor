@@ -3,4 +3,10 @@ package asciiArtApp.converters.color.toRgb
 import asciiArtApp.model.color.rgb.RgbColor
 import converters.Converter
 
-trait IntAsColorToRgbColorConverter[V <: RgbColor] extends Converter[Int, RgbColor]
+/**
+ * Converts Ints packed with rgb color information int RgbColors
+ *
+ * @tparam V Specific type of RgbColor
+ */
+trait IntAsColorToRgbColorConverter[V <: RgbColor]
+    extends Converter[Int, RgbColor]
