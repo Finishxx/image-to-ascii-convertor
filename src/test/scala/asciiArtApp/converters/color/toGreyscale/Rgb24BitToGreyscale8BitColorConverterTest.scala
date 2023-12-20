@@ -1,5 +1,6 @@
 package asciiArtApp.converters.color.toGreyscale
 
+import asciiArtApp.model.color.rgb.Rgb24BitColor
 import helpers.TestWithColor
 import org.scalatest.FunSuite
 import org.scalatest.Matchers.{
@@ -14,6 +15,7 @@ class Rgb24BitToGreyscale8BitColorConverterTest
     extends FunSuite
     with TestWithColor {
 
+  // Also checks for maximum and minimum while at it values (edge cases)
   def testWeightsOver1000Rgb24BitColors(
     redWeight: Double,
     greenWeight: Double,
@@ -23,7 +25,9 @@ class Rgb24BitToGreyscale8BitColorConverterTest
       greenWeight,
       blueWeight)
 
-    for (rgbColor <- get1000RandomRgb24BitColors) {
+    for (rgbColor <- get1000RandomRgb24BitColors ++ Seq(
+           Rgb24BitColor(0, 0, 0),
+           Rgb24BitColor(255, 255, 255))) {
       val converted = converter.convert(rgbColor)
       converted.intensity should equal(
         (rgbColor.red * redWeight + rgbColor.green * greenWeight + rgbColor.blue * blueWeight).toInt)
