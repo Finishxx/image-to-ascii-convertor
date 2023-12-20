@@ -26,9 +26,12 @@ class LinearGreyscale8BitToAsciiConverterTest
   }
 
   test("Should be able to deal with 4 characters") {
-    def checkExpect(greyscaleIntensity: Int, expectedChar: Char, converter: LinearGreyscale8BitToAsciiConverter): Unit = {
-      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(AsciiCharacter(expectedChar))
-    }
+    def checkExpect(
+      greyscaleIntensity: Int,
+      expectedChar: Char,
+      converter: LinearGreyscale8BitToAsciiConverter): Unit =
+      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(
+        AsciiCharacter(expectedChar))
 
     val chars = "abcd".toCharArray.map(AsciiCharacter)
     val converter = new LinearGreyscale8BitToAsciiConverter(chars)
@@ -49,11 +52,13 @@ class LinearGreyscale8BitToAsciiConverterTest
     checkExpect(255, 'd', converter)
   }
 
-
   test("Should be able to deal with 3 characters") {
-    def checkExpect(greyscaleIntensity: Int, expectedChar: Char, converter: LinearGreyscale8BitToAsciiConverter): Unit = {
-      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(AsciiCharacter(expectedChar))
-    }
+    def checkExpect(
+      greyscaleIntensity: Int,
+      expectedChar: Char,
+      converter: LinearGreyscale8BitToAsciiConverter): Unit =
+      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(
+        AsciiCharacter(expectedChar))
 
     val chars = "abc".toCharArray.map(AsciiCharacter)
     val converter = new LinearGreyscale8BitToAsciiConverter(chars)
@@ -70,11 +75,13 @@ class LinearGreyscale8BitToAsciiConverterTest
     checkExpect(255, 'c', converter)
   }
 
-
   test("Should be able to deal with 5 characters") {
-    def checkExpect(greyscaleIntensity: Int, expectedChar: Char, converter: LinearGreyscale8BitToAsciiConverter): Unit = {
-      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(AsciiCharacter(expectedChar))
-    }
+    def checkExpect(
+      greyscaleIntensity: Int,
+      expectedChar: Char,
+      converter: LinearGreyscale8BitToAsciiConverter): Unit =
+      converter.convert(Greyscale8BitColor(greyscaleIntensity)) should be(
+        AsciiCharacter(expectedChar))
 
     val chars = "abcde".toCharArray.map(AsciiCharacter)
     val converter = new LinearGreyscale8BitToAsciiConverter(chars)

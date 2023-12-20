@@ -14,6 +14,7 @@ class Rgb24BitToGreyscale8BitColorConverterTest
     extends FunSuite
     with TestWithColor {
 
+  // Automated testing is justified since the specification is straightforward
   def testWeightsOverAllRgb24BitColors(
     redWeight: Double,
     greenWeight: Double,
