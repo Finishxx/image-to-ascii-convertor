@@ -5,6 +5,10 @@ import converters.Converter
 
 import java.awt.image.BufferedImage
 
+/**
+ * Converts ImageIO's BufferedImage into GridImage of Ints, which represent
+ * color of the image stored in BufferedImage
+ */
 class BufferedImageToIntGridImageConverter
     extends Converter[BufferedImage, GridImage[Int]] {
   override def convert(what: BufferedImage): GridImage[Int] =
