@@ -2,7 +2,9 @@ package dataSource.generators.number.bounded
 
 import scala.util.Random
 
-// minInclusive, maxExclusive
+/**
+ * Uses standard Random library to generate random bounded Ints
+ */
 class StandardLibraryBoundedIntGenerator(from: Int, to: Int)
     extends BoundedIntGenerator(from, to) {
   require(from <= to, "From should always be smaller than to!")
