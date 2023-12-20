@@ -27,6 +27,6 @@ class FillerIntervalConverter[T](
     else if ((substitutionTo to to).contains(what))
       filler
     else
-      throw new NoSuchElementException(
+      throw new IllegalArgumentException(
         s"$what is out of bounds of this IntervalConverter [$from-$to]")
 }

@@ -5,6 +5,24 @@ import org.scalatest.Matchers.{an, be, convertToAnyShouldWrapper, equal}
 
 class FillerIntervalConverterTest extends FunSuite {
 
+  test("Constructing with invalid bounds") {
+    def shouldThrow(from: Int, to: Int): Unit =
+      an[IllegalArgumentException] should be thrownBy new FillerIntervalConverter[
+        Int](Seq(), 0, from, to)
+
+    shouldThrow(0, -1)
+    shouldThrow(1, 0)
+  }
+
+  test("Trying to get element out of bounds") {
+    val converter = new FillerIntervalConverter[Int](Seq(), 0, 0, 5)
+
+    an[IllegalArgumentException] should be thrownBy converter.convert(-1)
+    converter.convert(0)
+    converter.convert(5)
+    an[IllegalArgumentException] should be thrownBy converter.convert(6)
+  }
+
   test("Equal bounds and empty elements is OK") {
     val converter = new FillerIntervalConverter[Int](Seq(), 1, 0, 0)
 

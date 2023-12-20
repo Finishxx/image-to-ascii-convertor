@@ -19,6 +19,5 @@ class RotateSeq2DFilter[T](degrees: Int) extends Seq2DFilter[T] {
       case 180 | -180 => rotate180(what)
       case 90 | -270  => rotate90(what)
       case -90 | 270  => rotateMinus90(what)
-      case _          => throw new IllegalArgumentException("Invalid rotation angle")
     }
 }
