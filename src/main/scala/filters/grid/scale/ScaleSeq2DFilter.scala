@@ -3,6 +3,9 @@ package filters.grid.scale
 import filters.grid.Seq2DFilter
 
 class ScaleSeq2DFilter[T](factor: Double) extends Seq2DFilter[T] {
+  require(
+    Seq(1, 4, 0.25).contains(factor),
+    "Please use factors of 1, 4 or 0.25 only!")
 
   private def quadruple(grid: Seq[Seq[T]]): Seq[Seq[T]] =
     grid.flatMap(line => Seq.fill(2)(line.flatMap(Seq.fill(2)(_))))
@@ -14,8 +17,5 @@ class ScaleSeq2DFilter[T](factor: Double) extends Seq2DFilter[T] {
     case 1    => what
     case 4    => quadruple(what)
     case 0.25 => quarter(what)
-    case _ =>
-      throw new IllegalArgumentException(
-        s"Invalid scaling factor! Expected 0.25, 1 or 4, but received $factor")
   }
 }
