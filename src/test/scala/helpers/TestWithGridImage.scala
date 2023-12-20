@@ -1,9 +1,14 @@
 package helpers
 
-import asciiArtApp.model.image.grid.GridImage
+import asciiArtApp.model.image.grid.{GridImage, GridImageAs2DSeq}
 import org.scalatest.Matchers.{an, be, noException, thrownBy}
 
-trait TestWithGridImage {
+trait TestWithGridImage extends TestWithSeq2D {
+
+  val grid1x1: GridImage[Int] = new GridImageAs2DSeq[Int](gridSeq1x1)
+  val grid2x2: GridImage[Int] = new GridImageAs2DSeq[Int](gridSeq2x2)
+  val grid3x3: GridImage[Int] = new GridImageAs2DSeq[Int](gridSeq3x3)
+
   def testGridImageDimensions(gridImage: GridImage[_]): Unit = {
     // check all allowed are ok
     for (x <- 0 until gridImage.width)

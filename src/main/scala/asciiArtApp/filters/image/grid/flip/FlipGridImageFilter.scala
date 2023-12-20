@@ -5,4 +5,4 @@ import filters.grid.flip.Axis.Axis
 import filters.grid.flip.FlipSeq2DFilter
 
 class FlipGridImageFilter[T](axis: Axis)
-    extends Seq2DToGridImageFilterAdapter[T](new FlipSeq2DFilter(axis))
+    extends Seq2DToGridImageFilterAdapter[T](new FlipSeq2DFilter[T](axis))
