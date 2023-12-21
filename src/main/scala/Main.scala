@@ -24,6 +24,7 @@ import asciiArtApp.console.dataSource.{
   ImageExtension,
   ImportFromFileAction
 }
+import asciiArtApp.converters.color.toAscii.Greyscale8BitToAsciiConverter
 import asciiArtApp.converters.color.toAscii.default.{
   FillerGreyscale8BitToAsciiConverter,
   LinearGreyscale8BitToAsciiConverter
@@ -44,9 +45,12 @@ import asciiArtApp.filters.image.grid.flip.FlipGridImageFilter
 import asciiArtApp.filters.image.grid.rotate.RotateGridImageFilter
 import asciiArtApp.filters.image.grid.scale.ScaleGridImageFilter
 import asciiArtApp.model.character.ascii.AsciiCharacter
+import asciiArtApp.model.color.greyscale.Greyscale8BitColor
+import asciiArtApp.model.color.rgb.Rgb24BitColor
 import asciiArtApp.model.image.grid.GridImage
 import commandParser.model.CommandFlag
 import commandParser.{CommandParser, CommandParserImpl}
+import converters.Converter
 import converters.specific.ChainedConverter
 import dataSource.DataSource
 import dataSource.generators.number.StandardLibraryIntGenerator
@@ -58,8 +62,7 @@ import java.io.File
 import scala.util.Random
 
 object Main extends App {
-
-  val commandName: Seq[String] = "run".split("")
+  main2(args)
 
   private def parseActions(args: Seq[String]): Seq[Action] = {
 
@@ -68,11 +71,11 @@ object Main extends App {
     val command = commandParser.parse(args)
 
     command.names.names match {
-      case Seq("run") => _
+      case Seq() =>
       case _ =>
         throw new IllegalArgumentException(
-          s"Unexpected command name! Expected ${commandName
-            .mkString(" ")}, but got ${command.names.names.mkString(" ")}")
+          s"Unexpected command name! Expected no command name, but got ${command.names.names
+            .mkString(" ")}")
     }
 
     command.flags.map {
@@ -95,7 +98,7 @@ object Main extends App {
               "image flag expects exactly one argument and that is path desired image!")
         }
       case CommandFlag("image-random", _) => GenerateAction()
-      case CommandFlag("table-name", arg) =>
+      case CommandFlag("table", arg) =>
         arg match {
           case Seq(name) => ConvertKnownTableAction(name)
           case _ =>
@@ -133,8 +136,8 @@ object Main extends App {
         }
       case CommandFlag("flip", arg) =>
         arg match {
-          case Seq("x") => FlipFilterAction(Axis.X)
-          case Seq("y") => FlipFilterAction(Axis.Y)
+          case Seq("x") | Seq("X") => FlipFilterAction(Axis.X)
+          case Seq("y") | Seq("Y") => FlipFilterAction(Axis.Y)
           case _ =>
             throw new IllegalArgumentException(
               s"flip takes exactly one argument, got $arg")
@@ -168,34 +171,33 @@ object Main extends App {
         }
       case GenerateAction() =>
         new IntGridImageGenerator(
-          Random.between(100, 500),
-          Random.between(100, 500),
+          Random.between(10, 50),
+          Random.between(10, 50),
           new StandardLibraryIntGenerator)
     }
 
   private def getConverter(
     convertAction: ConvertAction): GridImageConverter[Int, AsciiCharacter] = {
     def bourke =
-      (
-        "bourke",
-        "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".toCharArray
-          .map(AsciiCharacter))
+      "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".toCharArray
+        .map(AsciiCharacter)
 
-    def bourkeSmall =
-      ("bourke-small", " .:-=+*#%@".toCharArray.map(AsciiCharacter))
+    def bourkeSmall = " .:-=+*#%@".toCharArray.map(AsciiCharacter)
 
-    def nonLinear = ("non-linear", " .:-=+*#%@".toCharArray.map(AsciiCharacter))
+    def nonLinear =
+      "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ".toCharArray
+        .map(AsciiCharacter)
 
-    val asciiConverter = convertAction match {
+    val asciiConverter: Greyscale8BitToAsciiConverter = convertAction match {
+      case ConvertKnownTableAction("bourke") =>
+        new LinearGreyscale8BitToAsciiConverter(bourke)
+      case ConvertKnownTableAction("non-linear") =>
+        new FillerGreyscale8BitToAsciiConverter(nonLinear)
+      case ConvertKnownTableAction("bourke-small") =>
+        new LinearGreyscale8BitToAsciiConverter(bourkeSmall)
       case ConvertCustomTableAction(table) =>
         new LinearGreyscale8BitToAsciiConverter(
           table.toCharArray.map(AsciiCharacter))
-      case ConvertKnownTableAction(bourke._1) =>
-        new LinearGreyscale8BitToAsciiConverter(bourke._2)
-      case ConvertKnownTableAction(nonLinear._1) =>
-        new FillerGreyscale8BitToAsciiConverter(nonLinear._2)
-      case ConvertKnownTableAction(bourkeSmall._1) =>
-        new LinearGreyscale8BitToAsciiConverter(bourkeSmall._2)
     }
 
     new InnerGridImageConverter(
@@ -207,7 +209,7 @@ object Main extends App {
       ))
   }
 
-  def main(args: Seq[String]): Unit = {
+  def main2(args: Array[String]): Unit = {
 
     val actions = parseActions(args)
 
@@ -235,8 +237,9 @@ object Main extends App {
     var asciiImage: GridImage[AsciiCharacter] =
       getConverter(convertAction).convert(intGridImage)
 
-    val asciiToText = new AsciiImageToTextConverter
+    val asciiToTextConverter = new AsciiImageToTextConverter
 
+    // handle actions
     for (action <- chainableActions)
       action match {
         case filterAction: FilterAction =>
@@ -249,10 +252,10 @@ object Main extends App {
               new ScaleGridImageFilter(scale).filter(asciiImage)
           }
         case exportAction: ExportAction =>
-          val asciiImageAsText = asciiToText.convert(asciiImage)
+          val asciiImageAsText = asciiToTextConverter.convert(asciiImage)
           exportAction match {
             case FileExportAction(path) =>
-              new FileOutputExporter(new File(path))
+              new FileOutputExporter(new File(path)).`export`(asciiImageAsText)
             case ConsoleExportAction() =>
               new StdOutputExporter().`export`(asciiImageAsText)
           }

@@ -9,4 +9,4 @@ import converters.Converter
  * @tparam V Specific type of RgbColor
  */
 trait IntAsColorToRgbColorConverter[V <: RgbColor]
-    extends Converter[Int, RgbColor]
+    extends Converter[Int, V]
