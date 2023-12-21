@@ -12,11 +12,11 @@ import scala.util.Random
  * @param height Desired height of the generated GridImage
  * @param intGenerator Generates individual ints contained in produced GridImage
  */
-class TrivialIntGridImageGenerator(
+class IntGridImageGenerator(
   width: Int,
   height: Int,
   intGenerator: IntGenerator)
-    extends GridImageGenerator[Int](width, height) {
+    extends GridImageGenerator[Int](width, height) with IntAsColorGridImageGenerator {
   require(width > 0, "Non-positive width does not make sense for a grid!")
   require(height > 0, "Non-positive height does not make sense for a grid!")
   override def generate(width: Int, height: Int): GridImage[Int] =

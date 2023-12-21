@@ -44,8 +44,6 @@ class CommandParserImplTest extends FunSuite {
   test("Parses example1") {
     val result = commandParser.parse(example1)
 
-    print(result.flags)
-
     result.names.names shouldBe Seq("run")
 
     result.flags shouldBe Seq(

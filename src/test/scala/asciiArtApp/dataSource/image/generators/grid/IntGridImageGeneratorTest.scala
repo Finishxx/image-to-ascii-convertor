@@ -7,21 +7,21 @@ import org.scalatest.Matchers.{an, be}
 
 import scala.language.postfixOps
 
-class TrivialIntGridImageGeneratorTest extends FunSuite with TestWithGridImage {
+class IntGridImageGeneratorTest extends FunSuite with TestWithGridImage {
 
   test("Generated image is correct for different sizes") {
     testGridImageDimensions(
-      new TrivialIntGridImageGenerator(
+      new IntGridImageGenerator(
         100,
         100,
         new StandardLibraryIntGenerator()).provide())
     testGridImageDimensions(
-      new TrivialIntGridImageGenerator(
+      new IntGridImageGenerator(
         1,
         100,
         new StandardLibraryIntGenerator()).provide())
     testGridImageDimensions(
-      new TrivialIntGridImageGenerator(
+      new IntGridImageGenerator(
         100,
         1000,
         new StandardLibraryIntGenerator()).provide())
@@ -29,7 +29,7 @@ class TrivialIntGridImageGeneratorTest extends FunSuite with TestWithGridImage {
 
   test("Throw on invalid dimensions") {
     def testThis(width: Int, height: Int) =
-      an[IllegalArgumentException] should be thrownBy new TrivialIntGridImageGenerator(
+      an[IllegalArgumentException] should be thrownBy new IntGridImageGenerator(
         width,
         height,
         new StandardLibraryIntGenerator()
@@ -43,7 +43,7 @@ class TrivialIntGridImageGeneratorTest extends FunSuite with TestWithGridImage {
     class FakeGenerator extends IntGenerator {
       override def provide(): Int = 0
     }
-    val zeroedGridImage = new TrivialIntGridImageGenerator(
+    val zeroedGridImage = new IntGridImageGenerator(
       100,
       100,
       new FakeGenerator()
