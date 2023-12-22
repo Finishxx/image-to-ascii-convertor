@@ -45,12 +45,9 @@ import asciiArtApp.filters.image.grid.flip.FlipGridImageFilter
 import asciiArtApp.filters.image.grid.rotate.RotateGridImageFilter
 import asciiArtApp.filters.image.grid.scale.ScaleGridImageFilter
 import asciiArtApp.model.character.ascii.AsciiCharacter
-import asciiArtApp.model.color.greyscale.Greyscale8BitColor
-import asciiArtApp.model.color.rgb.Rgb24BitColor
 import asciiArtApp.model.image.grid.GridImage
 import commandParser.model.CommandFlag
 import commandParser.{CommandParser, CommandParserImpl}
-import converters.Converter
 import converters.specific.ChainedConverter
 import dataSource.DataSource
 import dataSource.generators.number.StandardLibraryIntGenerator
@@ -62,7 +59,10 @@ import java.io.File
 import scala.util.Random
 
 object Main extends App {
-  main2(args)
+  try main2(args)
+  catch {
+    case e: Exception => print(e.getMessage)
+  }
 
   private def parseActions(args: Seq[String]): Seq[Action] = {
 
@@ -76,6 +76,27 @@ object Main extends App {
         throw new IllegalArgumentException(
           s"Unexpected command name! Expected no command name, but got ${command.names.names
             .mkString(" ")}")
+    }
+
+    if (command.flags.exists(_.flagName == "help")) {
+      var result = ""
+      result += "----------------------------------------\n"
+      result += "CHOOSE ONE AND NO MORE - IMAGE SOURCE\n"
+      result += "----------------------------------------\n"
+      result += "--random-image => generates a random image as input\n"
+      result += "-- image <path> => loads image given a <path> argument, accepts only jpg, png and gif images!\n"
+      result += "----------------------------------------\n"
+      result += "CHOOSE ONE OR ZERO AND NO MORE - CONVERSION\n"
+      result += "----------------------------------------\n"
+      result += "--table <tableName> => DEFAULT, uses given table for asciiConversion, accepts bourke, bourke-small and non-linear!\n"
+      result += "--custom-table <characters> => please provide at least one and at most 255 characters\n"
+      result += "----------------------------------------\n"
+      result += "CHOOSE AS MANY AS YOU WANT, ORDER MATTERS\n"
+      result += "----------------------------------------\n"
+      result += "--flip <axis> => flips image on either X or Y axis, accepts x/X, y/Y\n"
+      result += "--scale <scale> => scales image, accepts 0.25, 1 or 4\n"
+      result += "--rotate <degrees> => rotates image, accepts any multiple of 90\n"
+      throw new Exception(result)
     }
 
     command.flags.map {
@@ -156,6 +177,9 @@ object Main extends App {
             throw new IllegalArgumentException(
               s"output-file takes exactly one argument, got $arg")
         }
+      case CommandFlag(flagName, _) =>
+        throw new IllegalArgumentException(
+          s"Unknown flag used! Did not expect $flagName")
     }
   }
 
@@ -224,6 +248,8 @@ object Main extends App {
     val convertAction: ConvertAction =
       actions.filter(_.isInstanceOf[ConvertAction]) match {
         case Seq(action: ConvertAction) => action
+        case Seq() =>
+          ConvertKnownTableAction("bourke")
         case seq =>
           throw new IllegalArgumentException(
             s"Received ${seq.size} conversion flags! Please input just one or none!")
