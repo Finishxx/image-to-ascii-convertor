@@ -81,21 +81,23 @@ object Main extends App {
     if (command.flags.exists(_.flagName == "help")) {
       var result = ""
       result += "----------------------------------------\n"
-      result += "CHOOSE ONE AND NO MORE - IMAGE SOURCE\n"
+      result += "Pick exactly ONE image source\n"
       result += "----------------------------------------\n"
       result += "--random-image => generates a random image as input\n"
-      result += "-- image <path> => loads image given a <path> argument, accepts only jpg, png and gif images!\n"
+      result += "--image <path> => loads image given a <path> argument, accepts only jpg, png and gif images!\n"
       result += "----------------------------------------\n"
-      result += "CHOOSE ONE OR ZERO AND NO MORE - CONVERSION\n"
+      result += "Pick exactly ONE conversion table\n"
       result += "----------------------------------------\n"
       result += "--table <tableName> => DEFAULT, uses given table for asciiConversion, accepts bourke, bourke-small and non-linear!\n"
       result += "--custom-table <characters> => please provide at least one and at most 255 characters\n"
       result += "----------------------------------------\n"
-      result += "CHOOSE AS MANY AS YOU WANT, ORDER MATTERS\n"
+      result += "Choose as many as you want, order matters\n"
       result += "----------------------------------------\n"
       result += "--flip <axis> => flips image on either X or Y axis, accepts x/X, y/Y\n"
       result += "--scale <scale> => scales image, accepts 0.25, 1 or 4\n"
       result += "--rotate <degrees> => rotates image, accepts any multiple of 90\n"
+      result += "--output-file <file> => saves ASCII image into given file\n"
+      result += "--output-console => print ASCII image into console\n"
       throw new Exception(result)
     }
 
