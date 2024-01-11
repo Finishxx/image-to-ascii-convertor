@@ -61,7 +61,7 @@ import scala.util.Random
 object Main extends App {
   try main2(args)
   catch {
-    case e: Exception => print(e.getMessage)
+    case e: Exception => print(e.getMessage); sys.exit(1)
   }
 
   private def parseActions(args: Seq[String]): Seq[Action] = {
@@ -83,7 +83,7 @@ object Main extends App {
       result += "----------------------------------------\n"
       result += "Pick exactly ONE image source\n"
       result += "----------------------------------------\n"
-      result += "--random-image => generates a random image as input\n"
+      result += "--image-random => generates a random image as input\n"
       result += "--image <path> => loads image given a <path> argument, accepts only jpg, png and gif images!\n"
       result += "----------------------------------------\n"
       result += "Pick exactly ONE conversion table\n"
@@ -98,7 +98,8 @@ object Main extends App {
       result += "--rotate <degrees> => rotates image, accepts any multiple of 90\n"
       result += "--output-file <file> => saves ASCII image into given file\n"
       result += "--output-console => print ASCII image into console\n"
-      throw new Exception(result)
+      println(result)
+      sys.exit(0)
     }
 
     command.flags.map {
