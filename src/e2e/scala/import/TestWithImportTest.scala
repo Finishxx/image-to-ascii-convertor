@@ -9,6 +9,5 @@ trait TestWithImportTest extends TestWithConsoleApplication {
            bourkeTableFlag,
            bourkeSmallTableFlag,
            nonLinearTableFlag))
-      println(
-        runWithArgs(Seq(importImageFlag(imagePath), table, outputConsoleFlag)))
+      println(runWithArgs(Seq(importImageFlag(imagePath), table)))
 }
