@@ -4,7 +4,7 @@ import scala.sys.process.Process
 
 trait TestWithConsoleApplication {
 
-  def resDir: String = "src/e2e/scala/results"
+  def resDir: String = "src/e2e/scala/results/"
   def applicationPath: String = "src/e2e/scala/applicationJar/asciiart.jar"
 
   def escape(what: String): String = what.mkString("\"", "", "\"")
