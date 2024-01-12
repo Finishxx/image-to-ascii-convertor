@@ -17,9 +17,6 @@ trait TestWithConsoleApplication {
   def nonLinearTableFlag: String = tableFlag("non-linear")
   def customTableFlag(table: String): String =
     s"--custom-table ${escape(table)}"
-  def bourkeChars: String =
-    "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
-  def bourkeSmallChars: String = " .:-=+*#%@"
   def flipFlag(axis: String): String = s"--flip $axis"
   def rotate(degrees: String): String = s"--rotate $degrees"
   def scaleFlag(factor: String): String = s"--scale $factor"

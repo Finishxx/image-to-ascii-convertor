@@ -4,4 +4,6 @@ import org.scalatest.FunSuite
 
 class BourkeSmallCustomIdentityTest extends FunSuite with TestWithCustomTable {
 
+  def bourkeSmallChars: String = " .:-=+*#%@"
+
 }
