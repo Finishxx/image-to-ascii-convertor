@@ -8,8 +8,10 @@ class JpgImportTests
     with TestWithConsoleApplication
     with TestWithImport {
 
+  def jpgImagePath: String = "src/e2e/scala/images/formats/3x3jpg.jpg"
+
   test("No exceptions thrown") {
-    tryAllTablesWithImage(image3x3PathJpg)
+    tryAllTablesWithImage(jpgImagePath)
   }
 
 }

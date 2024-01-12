@@ -26,11 +26,6 @@ trait TestWithConsoleApplication {
   def outputConsoleFlag: String = "--output-console"
   def outputFileFlag(path: String): String = s"--output-file ${escape(path)}"
 
-  def image3x3PathGif: String = "src/e2e/scala/images/formats/3x3gif.gif"
-  def image3x3PathJpg: String = "src/e2e/scala/images/formats/3x3jpg.jpg"
-  def image3x3PathPng: String = "src/e2e/scala/images/formats/3x3png.png"
-  def image3x3PathBmp: String = "src/e2e/scala/images/formats/3x3bmp.bmp"
-
   def runWithArgs(args: Seq[String]): String = {
     val argString: String = args.mkString("", " ", "")
     println("java -jar \"" + applicationPath + "\" " + argString)

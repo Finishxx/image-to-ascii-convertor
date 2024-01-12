@@ -2,7 +2,6 @@ package `export`
 
 import helpers.TestWithConsoleApplication
 import org.scalatest.FunSuite
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
 
 import scala.io.Source
 import scala.util.{Failure, Success, Try, Using}
@@ -21,7 +20,7 @@ class ConsoleIdenticalToFileOutputTest
 
     val consoleOutput: String = runWithArgs(
       Seq(
-        importImageFlag(image3x3PathGif),
+        randomImageFlag,
         bourkeTableFlag,
         outputFileFlag(outputFile),
         outputConsoleFlag))
