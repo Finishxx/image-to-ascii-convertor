@@ -7,7 +7,7 @@ import org.scalatest.Matchers.{an, be}
 class UnsupportedExtensionTest
     extends FunSuite
     with TestWithConsoleApplication
-    with TestWithImportTest {
+    with TestWithImport {
 
   test("Error is thrown when using BMP file") {
     an[Exception] should be thrownBy
