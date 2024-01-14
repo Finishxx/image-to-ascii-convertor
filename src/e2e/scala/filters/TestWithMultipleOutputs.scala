@@ -12,6 +12,7 @@ trait TestWithMultipleOutputs extends TestWithConsoleApplication {
     for (nextFlags <- flagsToFilenames) {
 
     }
+    ???
   }
 
 }

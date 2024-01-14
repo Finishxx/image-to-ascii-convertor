@@ -3,7 +3,6 @@ package `import`
 import helpers.TestWithConsoleApplication
 
 trait TestWithImport extends TestWithConsoleApplication {
-
   def tryAllTablesWithImage(imagePath: String): Unit =
     for (table <- Seq(
            bourkeTableFlag,
