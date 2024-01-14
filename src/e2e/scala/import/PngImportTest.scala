@@ -8,9 +8,9 @@ class PngImportTest
     with TestWithConsoleApplication
     with TestWithImport {
 
-  def imagePath: String = "src/e2e/scala/images/formats/3x3png.png"
+  def pngImagePath: String = "src/e2e/scala/images/formats/3x3png.png"
 
   test("No exceptions thrown") {
-    tryAllTablesWithImage(imagePath)
+    tryAllTablesWithImage(pngImagePath)
   }
 }
