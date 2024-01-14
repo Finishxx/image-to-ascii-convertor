@@ -17,6 +17,8 @@ trait TestWithConsoleApplication {
   def nonLinearTableFlag: String = tableFlag("non-linear")
   def customTableFlag(table: String): String =
     s"--custom-table ${escape(table)}"
+  def customTableFlagNoEscape(table: String): String =
+    s"--custom-table $table"
   def flipFlag(axis: String): String = s"--flip $axis"
   def rotate(degrees: String): String = s"--rotate $degrees"
   def scaleFlag(factor: String): String = s"--scale $factor"

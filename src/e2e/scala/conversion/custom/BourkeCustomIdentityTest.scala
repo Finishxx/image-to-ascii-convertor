@@ -1,25 +1,29 @@
 package conversion.custom
 
+import helpers.TestWithBourkeImages
 import org.scalatest.FunSuite
 
-class BourkeCustomIdentityTest extends FunSuite with TestIdentity {
+class BourkeCustomIdentityTest
+    extends FunSuite
+    with TestIdentity
+    with TestWithBourkeImages {
 
   def bourkeChars: String =
-    "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
+    "'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i:,\\\"^`'\"'. \""
 
-  def image3x3Path: String = "src/e2e/scala/images/bourke/3x3png.png"
+  def conversionFlag: String = bourkeTableFlag
 
   test("3x3 image should convert the same as with custom") {
     testIdentity(
       importImageFlag(image3x3Path),
-      bourkeSmallTableFlag,
-      customTableFlag(bourkeChars))
+      conversionFlag,
+      customTableFlagNoEscape(bourkeChars))
   }
 
-  test("Random image should convert the same as with custom") {
+  test("4x4 image should convert the same as with custom") {
     testIdentity(
-      randomImageFlag,
-      bourkeSmallTableFlag,
-      customTableFlag(bourkeChars))
+      importImageFlag(image4x4Path),
+      conversionFlag,
+      customTableFlagNoEscape(bourkeChars))
   }
 }
