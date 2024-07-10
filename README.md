@@ -2,12 +2,12 @@
 
 Made as a semestral project for "Object oriented programming" class at [FIT CTU](https://fit.cvut.cz/cs). 
 
-Loads image using JDK's ImageIO, converts them to ASCII, applies optional filters and exports them to file or to console.
+Command line application, which loads image using JDK's ImageIO, converts them to ASCII, applies optional filters and exports them to file or to console.
 
-## Command line
+## Usage
 
 ```
-$ run —help
+$ run -—help
 ----------------------------------------
 Pick exactly ONE image source
 ----------------------------------------
