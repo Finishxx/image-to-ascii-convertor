@@ -4,7 +4,7 @@ Made as a semestral project for "Object oriented programming" class at [FIT CTU]
 
 Command line application, which loads image using JDK's ImageIO, converts them to ASCII, applies optional filters and exports them to file or to console.
 
-The application is rigorously tested with unit tests and end-to-end tests. Testing strategy and analysis (part of "Quality assurance" class) can be found in czech language [here](
+The application is rigorously tested with unit tests and end-to-end tests. Testing strategy and analysis (part of "Quality assurance" class) can be found in czech language [here](docs/test_analysis.pdf).
 
 ## Usage
 
