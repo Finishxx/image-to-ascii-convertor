@@ -4,6 +4,8 @@ Made as a semestral project for "Object oriented programming" class at [FIT CTU]
 
 Command line application, which loads image using JDK's ImageIO, converts them to ASCII, applies optional filters and exports them to file or to console.
 
+The application is rigorously tested with unit tests and end-to-end tests. Testing strategy and analysis (part of "Quality assurance" class) can be found in czech language [here](
+
 ## Usage
 
 ```
@@ -28,7 +30,13 @@ Choose as many as you want, order matters
 --output-console => print ASCII image into console
 ```
 
-## Testing
+## Example output
 
-The application is rigorously tested with unit tests and end-to-end tests.
+![Bug image before](screenshots/bug_before.gif)
+
+```
+run --image bug_before.gif --output-file bug_after.txt
+```
+
+![Bug image after](screenshots/bug_after.PNG)
 
