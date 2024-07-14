@@ -8,6 +8,8 @@ The application is rigorously tested with unit tests and end-to-end tests. Testi
 
 ## Usage
 
+Run `sbt` inside project directory to run `sbt` shell, inside which `run` comands compiles and runs the application with given arguments.
+
 ```
 $ run -—help
 ----------------------------------------
